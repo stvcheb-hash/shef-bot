@@ -4,4 +4,3 @@ __pycache__/
 .env
 Groq API.txt
 инструкции и ключи.txt
-*.txt
