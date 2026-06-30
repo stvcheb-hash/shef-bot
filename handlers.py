@@ -91,11 +91,11 @@ async def _send_recipe(message: Message, recipe: dict):
 @router.message(Command("start"))
 async def cmd_start(message: Message):
     await message.answer(
-        " <b>Шеф-рацион из помойки</b>\n\n"
+        "🧊 <b>Шеф-рацион из помойки</b>\n\n"
         "Напиши, что у тебя в холодильнике — текстом.\n"
         "Или <b>отправь фото</b> холодильника — я сам распознаю продукты!\n\n"
         "Пример: курица, 2 яйца, пол-лимона, старый сыр, рис\n\n"
-        " Бесплатно: 3 рецепта в день"
+        "🎁 Бесплатно: 3 рецепта в день"
     )
 
 
@@ -107,8 +107,8 @@ async def handle_photo(message: Message):
     
     # Скачиваем фото
     file = await message.bot.get_file(photo.file_id)
-   file_obj = await message.bot.download_file(file.file_path)
-photo_bytes = file_obj.read()
+    file_obj = await message.bot.download_file(file.file_path)
+    photo_bytes = file_obj.read()
     
     # Отправляем индикатор
     await message.answer("📸 Распознаю продукты на фото...")
@@ -131,7 +131,7 @@ photo_bytes = file_obj.read()
         # Показываем распознанное
         products_list = "\n".join(f"• {p['name']} ({p['grams']} г)" for p in products[:10])
         await message.answer(
-            f" Распознал продукты:\n\n{products_list}\n\n"
+            f"🔍 Распознал продукты:\n\n{products_list}\n\n"
             f"Готовлю рецепт..."
         )
         
@@ -169,7 +169,7 @@ async def handle_recipe_request(message: Message):
         
         if not products:
             await message.answer(
-                " Не удалось найти продукты в твоём сообщении.\n"
+                "😕 Не удалось найти продукты в твоём сообщении.\n"
                 "Попробуй написать проще: курица, яйца, рис"
             )
             return
