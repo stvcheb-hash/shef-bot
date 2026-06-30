@@ -27,7 +27,7 @@ async def run_web_server():
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", port)
     await site.start()
-    logging.info(f"🌐 Web server started on port {port}")
+    logging.info(f" Web server started on port {port}")
     
     # Держим сервер живым бесконечно
     while True:
