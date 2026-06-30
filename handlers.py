@@ -107,7 +107,8 @@ async def handle_photo(message: Message):
     
     # Скачиваем фото
     file = await message.bot.get_file(photo.file_id)
-    photo_bytes = await message.bot.download_file(file.file_path)
+   file_obj = await message.bot.download_file(file.file_path)
+photo_bytes = file_obj.read()
     
     # Отправляем индикатор
     await message.answer("📸 Распознаю продукты на фото...")
